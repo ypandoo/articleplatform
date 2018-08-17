@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>应急救援</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit=cover"
+	/>
+	<meta name="format-detection" content="telephone=no,address=no" />
+	<meta name="referrer" content="always" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="no" />
+
+	<script src="js/header.js"></script>
+	<script src="js/flexible.js"></script>
+	<!-- <script src="js/ui.js"></script> -->
+	<script src="js/swiper-3.3.1.min.js"></script>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="css/notes-list.css" />
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="css/header.css" />
+	<style>
+		.name {
+			border: 1px solid #3296db;
+			padding: 5px 30px;
+			border-radius: 20px;
+			font-size: 12px;
+		}
+		/* .slider-item img{
+			height:55vh;
+		} */
+
+		dt {
+			line-height: 40px;
+		}
+
+		.ui-section-wrapper {
+    background-color: #fff;
+}
+
+.z-wolrd {
+    border-bottom: 1px solid #e6e8ea;
+}
+
+.zworld-items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.zworld-items .zc-flex.zc-item01 {
+    background-image: url(img/rescue/1.svg);
+    background-size: 75px 55px;
+}
+
+.zworld-items .zc-flex.zc-item02 {
+    background-image: url(img/rescue/2.svg);
+    background-size: 45px 58px;
+}
+.zworld-items .zc-flex.zc-item03 {
+    background-image: url(img/rescue/3.svg);
+		background-size: 60px 37px;
+		    background-position: 99% 80%;
+}
+
+.zworld-items .zc-flex.zc-item04 {
+    background-image: url(img/rescue/4.svg);
+    background-size: 45px 30px;
+    background-position: 99% 70%;
+}
+
+.zworld-items .zc-flex:nth-child(odd) {
+    border-left-width: 0;
+}
+
+.zworld-items .zc-flex {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    width: 50%;
+    height: 80px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-width: 1px 0 0 1px;
+    border-style: solid;
+    border-color: #e6e8ea;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+}
+
+.zworld-items .zc-flex.zc-item01 h3 {
+    color: #3296db;
+}
+
+.zworld-items .zc-flex h3 {
+    padding: 12px 0 6px 8px;
+    font-size: 16px;
+    color: #3296db;
+    line-height: 16px;
+}
+/* .zworld-items .zc-flex.zc-item03 h3 {
+    color: #ffbd56;
+}
+
+.zworld-items .zc-flex.zc-item04 h3 {
+    color: #25d9b2;
+} */
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 400;
+}
+
+.zworld-items .zc-flex p {
+    padding-left: 8px;
+    color: #ced1d5;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.slider-item img {
+    height: 200px;
+    width: 100%;
+}
+
+
+	</style>
+</head>
+
+<body>
+	<header class="head2home">
+		<a onclick="showMenu()">
+			<img src="img/home.png" alt="" class="src" style="    width: 30px;
+			padding: 10px;">
+		</a>
+	</header>
+
+	<div class="menu" id='menu' style="display:none">
+			<ul class="menu-container">
+					<li class="menu-item">
+							<a href="service.html">安全监管</a>
+					</li>
+					<li class="menu-item">
+							<a href="routes.html">道路安全</a>
+					</li>
+					<li class="menu-item">
+							<a href="rescue.html">应急救援</a>
+					</li>
+			</ul>
+	</div>
+
+	<div class="fs-wrapper" style="padding-bottom:30px">
+		<div class="fs-hd clearfix">
+			<span class="day">04</span>
+			<span class="year-month">
+				<em>2017</em>
+				<em>DEC</em>
+			</span>
+			<span class="text">应急救援</span>
+			<div id="tp-weather-widget" style="    float: right;
+			    font-size: 16px;"></div>
+			<script>(function (T, h, i, n, k, P, a, g, e) { g = function () { P = h.createElement(i); a = h.getElementsByTagName(i)[0]; P.src = k; P.charset = "utf-8"; P.async = 1; a.parentNode.insertBefore(P, a) }; T["ThinkPageWeatherWidgetObject"] = n; T[n] || (T[n] = function () { (T[n].q = T[n].q || []).push(arguments) }); T[n].l = +new Date(); if (T.attachEvent) { T.attachEvent("onload", g) } else { T.addEventListener("load", g, false) } }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script>
+			<script>tpwidget("init", {
+					"flavor": "slim",
+					"location": "WJ2B9TWGFBT5",
+					"geolocation": "enabled",
+					"language": "zh-chs",
+					"unit": "c",
+					"theme": "white",
+					"container": "tp-weather-widget",
+					"bubble": "disabled",
+					"alarmType": "badge",
+					"color": "#FFFFFF",
+					"uid": "U84A4642D4",
+					"hash": "20b947e51b783f4d973df3f9ade31f9b"
+				});
+				tpwidget("show");</script>
+			<!-- <a class="fs-list-btn" href="/note/calendar.php"><i></i>历历<br>在目</a> -->
+		</div>
+		<div class="slider" id="slider" style="">
+			<div class="slider-group" style="">
+				<div class="swiper-wrapper">
+					<div class="slider-item">
+						<a href="content.html?type=jijiu_gfjj">
+							<img src="img/rescue/gaoyuan.jpg" width="100%" border="0">
+							<dl>
+								<dt>高反急救</dt>
+								<dd>
+									<span class="name">查阅相关知识</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="content.html?type=jijiu_yuxue">
+							<img src="img/rescue/yuxue.jpg" width="100%" border="0">
+							<dl>
+								<dt>雨雪驾车</dt>
+								<dd>
+									<span class="name">查阅相关知识</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="content.html?type=jijiu_qita">
+							<img src="img/rescue/yiliao.jpg" width="100%" border="0">
+							<dl>
+								<dt>其它急救</dt>
+								<dd>
+									<span class="name">查阅相关知识</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="tel.html">
+							<img src="img/rescue/dianhua.jpg" width="100%" border="0">
+							<dl>
+								<dt>急救电话</dt>
+								<dd>
+									<span class="name">查阅相关知识</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<!-- <div class="slider-item">
+						<a href="route_info?route=xinzang">
+							<img src="img/routes/5.jpg" width="100%" border="0">
+							<dl>
+								<dt>滇藏线</dt>
+								<dd>
+									<span class="name">查看线路</span>
+								</dd>
+							</dl>
+						</a>
+					</div> -->
+				</div>
+			</div>
+			<!-- <div class="slider-thumbs">
+				<div data-key="0" class="active slider-active">
+					<img src="img/routes/1-thumb.jpg">
+				</div>
+				<div data-key="1">
+					<img src="img/routes/2-thumb.jpg">
+				</div>
+				<div data-key="2">
+					<img src="img/routes/3-thumb.jpg">
+				</div>
+				<div data-key="3">
+					<img src="img/routes/4-thumb.jpg">
+				</div>
+				<div data-key="4">
+					<img src="img/routes/5-thumb.jpg">
+				</div>
+			</div> -->
+		</div>
+	</div>
+
+	<section class="ui-section-wrapper z-wolrd">
+		<div class="ui-section-body">
+			<div class="zworld-items">
+				<div class="zc-flex zc-item01">
+					<a href="content.html?type=jijiu_gfjj" data-bn-ipg="mindex-z-nav-package">
+						<h3>高反急救</h3>
+						<p>轻松应对高原反应</p>
+					</a>
+				</div>
+				<div class="zc-flex zc-item02">
+					<a href="content.html?type=jijiu_yuxue" data-bn-ipg="mindex-z-nav-ticket">
+						<h3>雨雪驾车</h3>
+						<p>雨雪路段行车安全指南</p>
+					</a>
+				</div>
+				<div class="zc-flex zc-item03">
+					<a href="content.html?type=jijiu_qita" data-bn-ipg="mindex-z-nav-visa">
+						<h3>其它急救</h3>
+						<p>照顾您的方方面面</p>
+					</a>
+				</div>
+				<div class="zc-flex zc-item04">
+					<a href="tel:120" data-bn-ipg="mindex-z-nav-citywalk">
+						<h3>急救120</h3>
+						<p>拨打120急救电话</p>
+					</a>
+				</div>
+				<div class="zc-flex zc-item03" style="background-image: url(img/tip.svg);    background-size: 45px 70px;
+				background-position: 90% 80%;">
+						<a href="content.html?type=jijiu_shigu" data-bn-ipg="mindex-z-nav-visa">
+							<h3>事故警示</h3>
+							<p>警钟长鸣安全第一</p>
+						</a>
+					</div>
+					<div class="zc-flex zc-item04" style="background-image: url(img/rescue/qiche.svg);     background-size: 35px 70px;
+					background-position: 95% 80%;">
+						<a href="content.html?type=jijiu_lukuang" data-bn-ipg="mindex-z-nav-citywalk">
+							<h3>实时路况</h3>
+							<p>路况帮助指南</p>
+						</a>
+					</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script type="text/javascript">
+		function GetDateStr(AddDayCount) {
+			var m;
+			var curDate = new Date();
+			curDate.setDate(curDate.getDate() + AddDayCount);
+			var y = curDate.getFullYear();
+			var month = curDate.getMonth() + 1;
+			var d = curDate.getDate();
+			switch (month) {
+				case 1:
+					m = "JAN";
+					break;
+				case 2:
+					m = "FED";
+					break;
+				case 3:
+					m = "MAR";
+					break;
+				case 4:
+					m = "APR";
+					break;
+				case 5:
+					m = 'MAY';
+					break;
+				case 6:
+					m = "JUN";
+					break;
+				case 7:
+					m = "JUL";
+					break;
+				case 8:
+					m = "AUG";
+					break;
+				case 9:
+					m = "SEP";
+					break;
+				case 10:
+					m = "OCT";
+					break;
+				case 11:
+					m = "NOV";
+					break;
+				case 12:
+					m = "DEC";
+					break;
+			}
+			if (d < 10) {
+				d = "0" + d;
+			} else {
+				d = d;
+			}
+			return {
+				y: y,
+				m: m,
+				d: d
+			};
+		}
+
+		$(function () {
+
+			var galleryTop = new Swiper('.slider-group', {
+				autoplay: 5000,
+				slideClass: 'slider-item',
+				pagination: '.slider-thumbs',
+				paginationType: 'custom',
+				onInit: function () {
+					$('.year-month').html('<em>' + GetDateStr(0).y + '</em><em>' + GetDateStr(0).m + '</em>');
+					$('.day').html(GetDateStr(0).d);
+				},
+				onTransitionStart: function (swiper) {
+					$('.slider-thumbs div').removeClass('slider-active');
+					$('.slider-thumbs div').eq(swiper.activeIndex).addClass('slider-active');
+				}
+			});
+			$('.slider-thumbs div').click(function () {
+				var aIndex = $(this).index();
+				galleryTop.slideTo(aIndex);
+			});
+		});
+	</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+.menu{
+    position: fixed;
+    height: 50px;
+    /* margin-top:50px; */
+    width: 100%;
+    background: #fff;
+    z-index: 999;
+    border-top:1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.menu-item{
+    color: #3ea9e2;
+    float: left;
+    width: 33.33%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.menu-item a{
+    color: #3ea9e2;
+}
+
+header{
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: "微软雅黑";
+    }
+
+    #allmap {
+      width: 100%;
+      height: 100vh;
+    }
+
+    p {
+      margin-left: 5px;
+      font-size: 14px;
+    }
+
+    .btn {
+      width: 90%;
+      margin-right: 10%;
+      margin-bottom: 20px;
+    }
+
+    .alert-primary {
+      color: #326eaf !important;
+      background-color: rgba(204, 229, 255, 0) !important;
+      border-color: rgba(204, 229, 255, 0) !important;
+      width: 100%;
+    }
+
+    i {
+      margin-right: 10px;
+    }
+  </style>
+  <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/base.css" rel="stylesheet">
+  <link href="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css" rel="stylesheet" type="text/css"
+  />
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mwzogZZGptZWIaKK32eOeydWTPDmdASl"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+  <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script src="js/base.js"></script>
+  <title>西藏安监</title>
+</head>
+
+<body>
+
+  <div id="allmap" style="margin-top:0px"></div>
+
+  <!-- <div class="index_more_search">
+    <span>信息图层</span>加载您想要查看的资讯
+  </div> -->
+
+  <!-- <div class="entry_tourism_festival testing_tour_festival  border1px_scaley myentrylist">
+    <div class="tourism_festival_b">
+      <!-- <a class="icon" onclick="selectInfo('wayPoint')">
+        <em id='wayPoint' style="background-image:url(img/waypoint.png)"></em>
+        道路信息</a> --
+      <a class="icon" onclick="selectInfo('warn')">
+        <em id='warn' style="background-image:url(img/warn.png)"></em>危险路段</a>
+      <a class="icon" onclick="selectInfo('gas')">
+        <em id='gas' style="background-image:url(img/gas.png)"></em>加油站</a>
+      <a class="icon" onclick="selectInfo('other')">
+        <em id='other' style="background-image:url(img/other.png)"></em>其它服务</a>
+
+    </div>
+  </div>
+
+
+
+
+
+  <div class="index_more_search">
+    <span>选择路线</span>选择您的行进路线
+  </div>
+
+  <div class="theme_hot" style="overflow:hidden">
+    <div class="hot_pic_box basefix">
+      <div class="pic_two basefix" style="overflow:hidden;margin-top:10px">
+        <div class="js_citywrap" onclick="selectLine('qingzang')">
+          <a href="###" id="qingzang" class="selected-line">
+            <img src="https://dimg04.c-ctrip.com/images/300c09000000475fp57F5_C_500_280.jpg">
+            <p>青藏线</p>
+          </a>
+        </div>
+        <div class="js_citywrap" onclick="selectLine('chuanzangnan')">
+          <a href="###" id="chuanzangnan">
+            <img src="https://dimg04.c-ctrip.com/images/300l0k000000bnttk054B_C_500_280.jpg">
+            <p>川藏南线</p>
+          </a>
+        </div>
+        <div class="js_citywrap" onclick="selectLine('chuanzangbei')">
+          <a href="###" id="chuanzangbei">
+            <img src="https://dimg04.c-ctrip.com/images/300n0m000000dcbskE2C9_C_500_280.jpg">
+            <p>川藏北线</p>
+          </a>
+        </div>
+        <div class="js_citywrap" onclick="selectLine('xinzang')">
+          <a href="###" id="xinzang">
+            <img src="https://dimg04.c-ctrip.com/images/300t0i00000098von5DAB_C_500_280.jpg">
+            <p>新藏线</p>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="index_more_search">
+    <span>详细行进路线</span>
+  </div>
+  <div id="r-result"></div> -->
+
+  <!-- <div class="row">
+          <div class="col" style="padding:0; width:100%; border-radius:20px;margin:0">
+            <div class="btn btn-outline-primary" onclick="showRoute('G109')">青藏线(G109)</div>
+          </div>
+          <div class="col" style="padding:0; width:100%; border-radius:20px;margin:0">
+            <div class="btn btn-outline-primary">休息区</div>
+          </div>
+          <div class="col" style="padding:0; width:100%; border-radius:20px;margin:0">
+            <div class="btn btn-outline-primary">其他信息</div>
+          </div>
+        </div> -->
+</body>
+
+</html>
+
+<script type="text/javascript" src="js/routes.js"></script>
+
+<script type="text/javascript">
+  var currentLine = Utility.getURLParameter('route');
+  if(!currentLine){
+    alert('程序错误!');
+    Utility.page("routes");
+  }
+
+
+  var infos = {
+    'wayPoint': true,
+    'warn': true,
+    'gas': true,
+    'other': true
+  }
+
+  // function selectInfo(info) {
+  //   if ($('#' + info).hasClass('selected-info')) {
+  //     $('#' + info).removeClass('selected-info')
+  //   } else {
+  //     $('#' + info).addClass('selected-info')
+  //   }
+
+  //   infos[info] == false ? infos[info] = true : infos[info] = false;
+  //   render();
+  // }
+
+  // function selectLine(line) {
+
+  //   $('#qingzang').removeClass('selected-line');
+  //   $('#chuanzangnan').removeClass('selected-line');
+  //   $('#chuanzangbei').removeClass('selected-line');
+  //   $('#xinzang').removeClass('selected-line');
+
+  //   $('#' + line).addClass('selected-line');
+  //   currentLine = line;
+  //   render();
+  // }
+
+  function render() {
+
+    map.clearOverlays();
+    //map.reset();
+    showRoute();
+    //showWayPoint();
+
+    if(infos.warn == true){
+      showDanger();}
+    
+  }
+
+  //Map default setting, default location = lasa
+  var map = new BMap.Map("allmap");
+  //map.centerAndZoom('拉萨', 12);
+
+
+  //Trafic layer
+  var ctrl = new BMapLib.TrafficControl({
+    showPanel: false //是否显示路况提示面板
+  });
+  map.addControl(ctrl);
+  ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_RIGHT);
+
+  //Navigator
+  var top_left_control = new BMap.ScaleControl({
+    anchor: BMAP_ANCHOR_TOP_LEFT
+  }); // 左上角，添加比例尺
+  var top_left_navigation = new BMap.NavigationControl({
+    anchor: BMAP_ANCHOR_TOP_LEFT
+  }); //左上角，添加默认缩放平移控件
+  map.addControl(top_left_control);
+  map.addControl(top_left_navigation);
+
+  //
+  var geolocationControl = new BMap.GeolocationControl();
+  map.addControl(geolocationControl);
+
+    var driving = new BMap.DrivingRoute(map, { renderOptions: { map: map, /*panel: "r-result"*/ autoViewport: true } });
+
+
+
+  //showRoute
+  function showRoute() {
+    var currentRoute = Routes[currentLine];
+    driving.search(currentRoute.startCity, currentRoute.endCity
+                , {'startCity':currentRoute.startCity, 'endCity':currentRoute.endCity
+                , 'waypoints': currentRoute.waypointsName});
+  }
+
+  function showDanger(){
+      var currentRoute = Routes[currentLine];
+      var myIcon = new BMap.Icon("img/danger.png", new BMap.Size(25, 25));
+      var markerDanger = new BMap.Marker(currentRoute.danger.point, { icon: myIcon });  // 创建标注
+      markerDanger.addEventListener("click", function (e) {
+        //console.log(e);
+        var opts = {
+          // width: 100,     // 信息窗口宽度
+          // height: 50,     // 信息窗口高度
+          title: '危险路段提示', // 信息窗口标题
+        }
+        var infoWindow = new BMap.InfoWindow(currentRoute.danger.info, opts); // 创建信息窗口对象 
+        this.openInfoWindow(infoWindow);
+      })
+      //map.addOverlay(markerDanger);  
+  }
+
+
+  // function showWayPoint() {
+  //   Routes[route].Markers.forEach(function (element) {
+  //     var marker = new BMap.Marker(new BMap.Point(element.latitude, element.longtitude)); //创建marker对象
+  //     marker.setTitle(element.title);
+  //     marker.addEventListener("click", function (e) {
+  //       //console.log(e);
+  //       var opts = {
+  //         // width: 100,     // 信息窗口宽度
+  //         // height: 50,     // 信息窗口高度
+  //         title: element.title, // 信息窗口标题
+  //         enableMessage: false, //设置允许信息窗发送短息
+  //         message: 'test'
+  //       }
+  //       var infoWindow = new BMap.InfoWindow(element.description, opts); // 创建信息窗口对象 
+  //       this.openInfoWindow(infoWindow);
+  //     })
+  //     map.addOverlay(marker); //在地图中添加marker
+  //   }, this);
+  // }
+
+  render();
+</script>

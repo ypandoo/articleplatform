@@ -9,6 +9,8 @@ var category = require('./routes/category')
 var article = require('./routes/article')
 var section = require('./routes/section')
 var file = require('./routes/file')
+var param = require('./routes/param')
+var menu = require('./routes/menu')
 
 var app = express()
 var cors = require('cors')
@@ -38,6 +40,8 @@ app.use('/category', category)
 app.use('/article', article)
 app.use('/section', section)
 app.use('/file', file)
+app.use('/param', param)
+app.use('/menu', menu)
 
 // db
 var mongoose = require('mongoose')

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>道路安全</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit=cover"
+	/>
+	<meta name="format-detection" content="telephone=no,address=no" />
+	<meta name="referrer" content="always" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="no" />
+
+	<script src="js/flexible.js"></script>
+	<!-- <script src="js/ui.js"></script> -->
+	<script src="js/swiper-3.3.1.min.js"></script>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="css/notes-list.css" />
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="css/header.css" />
+	<script src="js/header.js"></script>
+	<!-- <script type="text/javascript" src="https://api.seniverse.com/v3/weather/now.json?location=xizang&ts=1443079775&ttl=30&uid=[your_uid]&sig=[your_signature]&callback=showWeather"></script> -->
+
+	<style>
+		.name{
+			/* border: 1px solid #ff9d00; */
+			border: 1px solid #3296db;
+			padding: 5px 30px;
+			border-radius: 20px;
+			font-size: 12px;
+		}
+
+		.slider-item img{
+			height:45vh;
+		}
+
+		dt{
+			line-height:40px;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<header class="head2home">
+		<a onclick="showMenu()">
+			<img src="img/home.png" alt="" class="src" style="    width: 30px;
+			padding: 10px;">
+		</a>
+	</header>
+
+
+
+	<div class="menu" id='menu' style="display:none">
+			<ul class="menu-container">
+				<li class="menu-item">
+					<a href="service.html">安全监管</a>
+				</li>
+				<li class="menu-item">
+					<a href="routes.html">道路安全</a>
+				</li>
+				<li class="menu-item">
+					<a href="rescue.html">应急救援</a>
+				</li>
+			</ul>
+		</div>
+
+	<div class="fs-wrapper" style="padding-bottom:30px">
+	<div class="fs-hd clearfix">
+            <span class="day">04</span>
+            <span class="year-month"><em>2017</em><em>DEC</em></span>
+			<span class="text">道路安全</span>
+<div id="tp-weather-widget" style="    float: right;
+    font-size: 16px;"></div>
+<script>(function (T, h, i, n, k, P, a, g, e) { g = function () { P = h.createElement(i); a = h.getElementsByTagName(i)[0]; P.src = k; P.charset = "utf-8"; P.async = 1; a.parentNode.insertBefore(P, a) }; T["ThinkPageWeatherWidgetObject"] = n; T[n] || (T[n] = function () { (T[n].q = T[n].q || []).push(arguments) }); T[n].l = +new Date(); if (T.attachEvent) { T.attachEvent("onload", g) } else { T.addEventListener("load", g, false) } }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script>
+<script>tpwidget("init", {
+		"flavor": "slim",
+		"location": "WJ2B9TWGFBT5",
+		"geolocation": "enabled",
+		"language": "zh-chs",
+		"unit": "c",
+		"theme": "white",
+		"container": "tp-weather-widget",
+		"bubble": "disabled",
+		"alarmType": "badge",
+		"color": "#FFFFFF",
+		"uid": "U84A4642D4",
+		"hash": "20b947e51b783f4d973df3f9ade31f9b"
+	});
+	tpwidget("show");</script>
+			<!-- <span class="text">25°</span> -->
+
+			<!-- <img src="img/3d_60/0.png" alt="" class="src" style="position: absolute;right: 0px;top: -20px;"> -->
+            <!-- <a class="fs-list-btn" href="/note/calendar.php"><i></i>历历<br>在目</a> -->
+        </div>
+		<div class="slider" id="slider" style="height:100vh">
+			<div class="slider-group" style="height:60vh">
+				<div class="swiper-wrapper">
+					<div class="slider-item">
+						<a href="route_list.html?type=qingzang">
+							<img src="http://p84xxarlh.bkt.clouddn.com/route6.jpg"
+							    width="100%" border="0">
+							<dl>
+								<dt>青藏线-G109</dt>
+								<dd>
+									<span class="name">查看路线信息</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="route_list.html?type=chuanzangnan">
+							<img src="http://p84xxarlh.bkt.clouddn.com/route1.jpg"
+							    width="100%" border="0">
+							<dl>
+								<dt>川藏南线-G318</dt>
+								<dd>
+									<span class="name">查看路线信息</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="route_list.html?type=chuanzangbei">
+							<img src="http://p84xxarlh.bkt.clouddn.com/route3.jpg"
+							    width="100%" border="0">
+							<dl>
+								<dt>川藏北线-G317</dt>
+								<dd>
+									<span class="name">查看路线信息</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="route_list.html?type=xinzang">
+							<img src="http://p84xxarlh.bkt.clouddn.com/route4.jpg"
+							    width="100%" border="0">
+							<dl>
+								<dt>新藏线-G219</dt>
+								<dd>
+									<span class="name">查看路线信息</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="route_list.html?type=dianzang">
+							<img src="http://p84xxarlh.bkt.clouddn.com/route5.jpg"
+							    width="100%" border="0">
+							<dl>
+								<dt>滇藏线-G214</dt>
+								<dd>
+									<span class="name">查看路线信息</span>
+								</dd>
+							</dl>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="slider-thumbs">
+				<div data-key="0" class="active slider-active">
+					<img src="http://p84xxarlh.bkt.clouddn.com/route6-thumb.jpg">
+				</div>
+				<div data-key="1">
+					<img src="http://p84xxarlh.bkt.clouddn.com/route1-thumb.jpg">
+				</div>
+				<div data-key="2">
+					<img src="http://p84xxarlh.bkt.clouddn.com/route3-thumb.jpg">
+				</div>
+				<div data-key="3">
+					<img src="http://p84xxarlh.bkt.clouddn.com/route4-thumb.jpg">
+				</div>
+				<div data-key="4">
+					<img src="http://p84xxarlh.bkt.clouddn.com/route5-thumb.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="bg"></div>
+	</div>
+
+
+
+
+	<script type="text/javascript">
+
+function GetDateStr(AddDayCount){
+                var m;
+                var curDate=new Date();
+                curDate.setDate(curDate.getDate()+AddDayCount);
+                var y=curDate.getFullYear();
+                var month=curDate.getMonth()+1;
+                var d=curDate.getDate();
+                switch(month){
+                    case 1 :
+                        m="JAN";
+                        break;
+                    case 2 :
+                        m="FED";
+                        break;
+                    case 3 :
+                        m="MAR";
+                        break;
+                    case 4 :
+                        m="APR";
+                        break;
+                    case 5 :
+                        m='MAY';
+                        break;
+                    case 6 :
+                        m="JUN";
+                        break;
+                    case 7 :
+                        m="JUL";
+                        break;
+                    case 8 :
+                        m="AUG";
+                        break;
+                    case 9 :
+                        m="SEP";
+                        break;
+                    case 10 :
+                        m="OCT";
+                        break;
+                    case 11 :
+                        m="NOV";
+                        break;
+                    case 12 :
+                        m="DEC";
+                        break;
+                }
+                if(d < 10){
+                    d= "0"+d;
+                }else{
+                    d = d;
+                }
+                return {
+                    y: y,
+                    m: m,
+                    d: d
+                };
+            }
+
+		$(function () {
+
+			var galleryTop = new Swiper('.slider-group', {
+				autoplay: 5000,
+				slideClass: 'slider-item',
+				pagination: '.slider-thumbs',
+				paginationType: 'custom',
+				onInit: function () {
+					$('.year-month').html('<em>'+GetDateStr(0).y+'</em><em>'+GetDateStr(0).m+'</em>');
+                    $('.day').html(GetDateStr(0).d);
+				},
+				onTransitionStart: function (swiper) {
+					$('.slider-thumbs div').removeClass('slider-active');
+					$('.slider-thumbs div').eq(swiper.activeIndex).addClass('slider-active');
+				}
+			});
+			$('.slider-thumbs div').click(function () {
+				var aIndex = $(this).index();
+				galleryTop.slideTo(aIndex);
+			});
+		});
+	</script>
+
+
+
+</body>
+
+</html>

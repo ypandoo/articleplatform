@@ -1,48 +1,38 @@
 var express = require('express')
 var router = express.Router()
-var Section = require('../models/section')
+var Menu = require('../models/menu')
 
 router.post('/add', function(req, res) {
-  const icon = req.body.icon
-  if (!icon) {
-    res.json({ error_code: 1, msg: 'icon is empty' })
-    return
-  }
   const desc = req.body.desc
-  if (!desc) {
-    res.json({ error_code: 1, msg: 'desc is empty' })
-    return
-  }
   const title = req.body.title
   if (!title) {
     res.json({ error_code: 1, msg: 'title is empty' })
     return
   }
-  const image = req.body.image
-  if (!image) {
-    res.json({ error_code: 1, msg: 'image is empty' })
+  const url = req.body.url
+  if (!url) {
+    res.json({ error_code: 1, msg: 'url is empty' })
     return
   }
-  const categories = req.body.categories
-  if (!categories) {
-    res.json({ error_code: 1, msg: 'categories is empty' })
+  const icon = req.body.icon
+  if (!icon) {
+    res.json({ error_code: 1, msg: 'icon is empty' })
     return
   }
 
-  var section = new Section({
+  var menu = new Menu({
     title: title,
     desc: desc,
-    icon: icon,
-    image: image,
-    categories: categories
+    url: url,
+    icon: icon
   })
-  section.save().then(function(doc){
-      console.log('------section saved---------')
+  menu.save().then(function(doc){
+      console.log('------menu saved---------')
       console.log(doc)
-      res.json({ error_code: 0, msg: 'success' })
+      res.json({ error_code: 0, msg: 'success', doc:doc })
   }).catch(function(err){
       // want to handle errors here
-      res.json({ error_code: 1, msg: 'save section failed!' })
+      res.json({ error_code: 1, msg: 'save menu failed!' })
   });
   
 })
@@ -53,43 +43,35 @@ router.post('/update', function(req, res) {
     res.json({ error_code: 1, msg: 'id is empty' })
     return
   }
-  const icon = req.body.icon
-  if (!icon) {
-    res.json({ error_code: 1, msg: 'icon is empty' })
-    return
-  }
+
   const desc = req.body.desc
-  if (!desc) {
-    res.json({ error_code: 1, msg: 'desc is empty' })
-    return
-  }
   const title = req.body.title
   if (!title) {
     res.json({ error_code: 1, msg: 'title is empty' })
     return
   }
-  const image = req.body.image
-  if (!image) {
-    res.json({ error_code: 1, msg: 'image is empty' })
+  const url = req.body.url
+  if (!url) {
+    res.json({ error_code: 1, msg: 'url is empty' })
     return
   }
-  const categories = req.body.categories
-  if (!categories) {
-    res.json({ error_code: 1, msg: 'categories is empty' })
+  const icon = req.body.icon
+  if (!icon) {
+    res.json({ error_code: 1, msg: 'icon is empty' })
     return
   }
 
-  Section.findOneAndUpdate({ _id: id }, {
+
+  Menu.findOneAndUpdate({ _id: id }, {
     title: title,
     desc: desc,
-    icon: icon,
-    image: image,
-    categories: categories
+    url: url,
+    icon: icon
   }, function(err, docs) {
     if (!err) {
       res.json({ error_code: 0, msg: 'success' })
     } else {
-      res.json({ error_code: 1, msg: 'query section failed', data: {}})
+      res.json({ error_code: 1, msg: 'query menu failed', data: {}})
     }
   })
 })
@@ -105,11 +87,11 @@ router.post('/list', function(req, res) {
   }
 
   var query = {deleted: false}
-  Section.paginate(query, { sort: {sort: 'desc'}, page: page, limit: limit }, function(err, docs) {
+  Menu.paginate(query, {page: page, limit: limit }, function(err, docs) {
     if (!err) {
       res.json({ error_code: 0, msg: 'success', items: docs.docs, total: docs.total, page: docs.page, pages: docs.pages })
     } else {
-      res.json({ error_code: 1, msg: 'query section failed', data: {}})
+      res.json({ error_code: 1, msg: 'query menu failed', data: {}})
     }
   })
 })
@@ -120,11 +102,11 @@ router.post('/findOne', function(req, res) {
     res.json({ error_code: 1, msg: 'id is empty' })
     return
   }
-  Section.findOne({ _id: id }).populate('categories').exec(function(err, item) {
+  Menu.findOne({ _id: id }, function(err, item) {
     if (!err) {
       res.json({ error_code: 0, msg: 'success', item: item })
     } else {
-      res.json({ error_code: 1, msg: 'query one section failed', item: {}})
+      res.json({ error_code: 1, msg: 'query one menu failed', item: {}})
     }
   })
 })
@@ -142,13 +124,13 @@ router.post('/delete', function(req, res) {
   else
     deleted = true
 
-  Section.findOneAndUpdate({ _id: id }, {
+  Menu.findOneAndUpdate({ _id: id }, {
     deleted: deleted,
   }, function(err, docs) {
     if (!err) {
       res.json({ error_code: 0, msg: 'success' })
     } else {
-      res.json({ error_code: 1, msg: 'change show status of section failed'})
+      res.json({ error_code: 1, msg: 'change show status of menu failed'})
     }
   })
 })

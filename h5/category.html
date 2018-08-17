@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>乐游琼结</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit=cover"
+	/>
+	<meta name="format-detection" content="telephone=no,address=no" />
+	<meta name="referrer" content="always" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="no" />
+
+	<script src="js/header.js"></script>
+    <script src="js/base.js"></script>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="css/ui.css" />
+	<link rel="stylesheet" type="text/css" href="css/header.css" />
+	<link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/element-ui/2.4.0/theme-chalk/index.css" rel="stylesheet">
+
+	<style>
+		.page__hd {
+			padding: 15px 20px;
+		}
+		.page__title {
+			text-align: left;
+			font-size: 20px;
+			font-weight: 500;
+		}
+    .page__desc {
+        margin-top: 5px;
+        color: #888;
+        text-align: left;
+        font-size: 14px;
+    }
+		.weui-grid__icon {
+			width: 30px;
+			height: 30px;
+			margin: 0 auto;
+    }
+    .weui-media-box__desc {
+    color: #999999;
+    font-size: 12px;
+}
+.weui-media-box_appmsg .weui-media-box__thumb {
+    vertical-align: middle;
+}
+	</style>
+</head>
+
+<body>
+    <div  id="vueapp">
+        <header class="head2home">
+                    <el-dropdown  style="width: 50px; height: 50px;">
+                            <div class="el-dropdown-link" style="width: 50px; height: 50px;">
+                                    <img src="img/home.png" alt="" class="src" style="width: 30px; height: 30px; margin: 10px;">
+                            </div>
+
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item v-for="menu in menuList"><a :href="menu.url">{{menu.title}}</a></el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+            </header>
+
+		<transition enter-active-class="animated bounceOutRight">
+			<div>
+				<img :src="item.image" alt="" width="100%">
+			</div> 
+		</transition>
+
+		<div class="page__hd">
+			<h1 class="page__title">{{item.title}}</h1>
+			<p class="page__desc">{{item.desc}}</p>
+        </div>
+    
+      <div class="weui-panel weui-panel_access">
+        <!-- <div class="weui-panel__hd">图文组合列表</div> -->
+        <div class="weui-panel__bd">
+            <a @click="detail(article)" class="weui-media-box weui-media-box_appmsg" v-for="article in list">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" :src="article.image" alt="">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">{{article.title}}</h4>
+                    <p class="weui-media-box__desc">{{article.desc}}</p>
+                </div>
+            </a>
+        </div>
+        <div class="weui-panel__ft" v-show="showMore" @click="more()" >
+            <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+                <div class="weui-cell__bd" style="text-align: center">查看更多</div>
+                <!-- <span class="weui-cell__ft"></span> -->
+            </a>    
+        </div>
+    </div>
+	
+
+	</div>
+
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/element-ui/2.4.0/index.js"></script>
+
+	<script type="text/javascript">
+    window.vueapp = new Vue({
+            el: "#vueapp",
+            data: {
+              item:{title:"", desc:"", url:""},
+              list:[],
+              currentPage: 0,
+              pages: 0,
+              limit: 10,
+              id: "",
+              menuList:[],
+            },
+            computed:{
+              showMore: function(){
+                return this.currentPage < this.pages
+              }
+            },
+            methods: {
+              more: function(){
+                this.currentPage++;
+                this.getList()
+              },
+              detail: function(article){
+                window.location.href = 'detail.html?id='+article._id
+              },
+              getCategoryInfo: function(){
+                var self = this
+                var submitData = {"id": self.id}
+
+                //banner
+                Vue.http.post(window.serviceUrl + '/category/findOne', submitData)
+                    .then(function (res) {
+                        console.log('------------Category FindOne------------------')
+                        console.log(res);
+                        if (res.body.error_code == 0) {
+                          self.item = res.body.item
+                        } else {
+
+                        }
+                    }, function (res) {
+                        alert('系统发生未知错误,请联系我们')
+                  });
+
+              },
+
+              getList: function(){
+                var self = this
+                var submitData = {"type": self.id, "page":self.currentPage, "limit": self.limit}
+
+                //banner
+                Vue.http.post(window.serviceUrl + '/article/list', submitData)
+                    .then(function (res) {
+                         console.log('------------Article List-----------------')
+                        console.log(res);
+                        if (res.body.error_code == 0) {
+                          self.list = self.list.concat(res.body.items)
+                          self.currentPage = res.body.page
+                          self.pages = res.body.pages
+                        } else {
+
+                        }
+                    }, function (res) {
+                        alert('系统发生未知错误,请联系我们')
+                  });
+              },
+
+              getMenu: function(sectionId){
+									var self = this
+
+									//banner
+									Vue.http.post(window.serviceUrl + '/menu/list', {})
+											.then(function (res) {
+													console.log('------------menu list------------------')
+													console.log(res);
+													if (res.body.error_code == 0) {
+														self.menuList = res.body.items
+													} else {
+														alert('系统发生未知错误,请联系我们')
+													}
+											}, function (res) {
+													alert('系统发生未知错误,请联系我们')
+										});
+
+								},
+
+            },
+            mounted: function() {
+                this.id = Utility.getURLParameter('id')
+                if(!this.id)
+                {
+                  alert("找不到内容，请联系管理员!")
+                  return
+                }
+                this.getMenu()
+                this.getCategoryInfo()
+                this.getList()
+            }
+        });
+	</script>
+
+
+
+</body>
+
+</html>

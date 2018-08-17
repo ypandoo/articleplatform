@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>道路安全</title>
+<meta name="keywords" content="西藏安监" />
+<meta name="description" content="西藏安监" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<link rel="stylesheet" type="text/css" href="css/site_base.css"/>
+<link rel="stylesheet" type="text/css" href="css/header.css" />
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+<style>
+  .item{
+    height: 80px;
+    line-height: 80px;
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1)
+  }
+
+  .item i{
+    font-size: 24px;
+    color: aqua;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+  		.name {
+			border: 1px solid #ff9d00;
+			padding: 5px 30px;
+			border-radius: 20px;
+			font-size: 12px;
+		}
+		/* .slider-item img{
+			height:55vh;
+		} */
+
+		dt {
+			line-height: 40px;
+		}
+
+		.ui-section-wrapper {
+    background-color: #fff;
+}
+
+.z-wolrd {
+    /* border-bottom: 1px solid #e6e8ea; */
+}
+
+.zworld-items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.zworld-items .zc-flex.zc-item01 {
+    background-image: url(img/affair/net.svg);
+    background-size: 50px 45px;
+    background-position: 95% 65% !important;
+}
+
+.zworld-items .zc-flex.zc-item02 {
+    background-image: url(img/rescue/1.svg);
+background-size: 70px 63px;
+    background-position: 97% 80%;
+}
+.zworld-items .zc-flex.zc-item03 {
+    background-image: url(img/rescue/5.svg); 
+    background-size: 45px 63px;
+    background-position: 94% 80%;
+}
+
+.zworld-items .zc-flex.zc-item04 {
+    background-image: url(img/affair/tel.svg);
+    background-size: 40px 30px;
+    background-position: 99% 80%;
+}
+
+.zworld-items .zc-flex.zc-item05 {
+    background-image: url(img/affair/safe2.svg);
+    background-size: 40px 30px;
+    background-position: 97% 80%;
+}
+
+.zworld-items .zc-flex.zc-item06 {
+    background-image: url(img/affair/mail2.svg);
+    background-size: 30px 30px;
+    background-position: 97% 80%;
+}
+.zworld-items .zc-flex.zc-item07 {
+    background-image: url(img/affair/info2.svg);
+    background-size: 30px 30px;
+    background-position: 96% 80%;
+}
+
+.zworld-items .zc-flex.zc-item08 {
+    background-image: url(img/affair/table2.svg);
+    background-size: 30px 30px;
+    background-position: 95% 78%;
+}
+
+.zworld-items .zc-flex:nth-child(odd) {
+    border-left-width: 0;
+}
+
+.zworld-items .zc-flex {
+    /* -webkit-box-flex: 0; */
+    /* -ms-flex: 0 0 50%; */
+    /* flex: 0 0 50%; */
+    width: 100%;
+    height: 90px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-width: 1px 0 0 1px;
+    border-style: solid;
+    border-color: #e6e8ea;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    padding-left: 30px;
+}
+
+.zworld-items .zc-flex.zc-item01 h3 {
+    color: #3296db;
+}
+
+.zworld-items .zc-flex h3 {
+    padding: 12px 0 6px 8px;
+    font-size: 16px;
+    /* color: #fb9388; */
+	color: #3296db;
+    line-height: 16px;
+}
+/* .zworld-items .zc-flex.zc-item03 h3 {
+    color: #ffbd56;
+}
+
+.zworld-items .zc-flex.zc-item04 h3 {
+    color: #25d9b2;
+} */
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 100;
+}
+
+.zworld-items .zc-flex p {
+    padding-left: 8px;
+    color: #ced1d5;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+</style>
+</head>
+<body  ms-controller="contents">
+
+<div class="wrapper">
+    <header style="    height: 50px;
+        background-size: 5px;
+        position: relative;">
+        <a onclick="showMenu()">
+            <img src="img/home.png" alt="" class="src" style="    width: 30px; margin:10px">
+        </a>
+    </header>
+
+	<div class="menu" id='menu' style="display:none">
+            <ul class="menu-container">
+                <li class="menu-item">
+                    <a href="service.html">安全监管</a>
+                </li>
+                <li class="menu-item">
+                    <a href="routes.html">道路安全</a>
+                </li>
+                <li class="menu-item">
+                    <a href="rescue.html">应急救援</a>
+                </li>
+            </ul>
+        </div>
+
+
+    <section class="banner">
+        <!-- <div class="banner-tilte"><h3>时政要闻</h3><p>News</p></div> -->
+        <img ms-attr="{src: 'img/routes/des_'+type+'.jpg'}"/>
+    </section>
+
+    <div style="font-size:28px; font-weight:100; line-height:60px; margin:10px; color:#3296db">{{route}}</div>
+
+      <section class="ui-section-wrapper z-wolrd">
+        <div class="ui-section-body">
+          <div class="zworld-items">
+            <div class="zc-flex zc-item01">
+              <a ms-attr="{href: 'route_info.html?route='+type}" data-bn-ipg="mindex-z-nav-package">
+                <h3>线上地图</h3>
+                <p>轻松查看线路</p>
+              </a>
+            </div>
+            <div class="zc-flex zc-item02">
+              <a ms-attr="{href: 'content_route.html?type=des_'+type}" data-bn-ipg="mindex-z-nav-ticket">
+                <h3>线路说明</h3>
+                <p>照顾行程的方方面面</p>
+              </a>
+            </div>
+            <div class="zc-flex zc-item03" style="border-bottom:1px solid rgba(0,0,0,0.1)">
+              <a ms-attr="{href: 'content_route.html?type=v_'+type}" data-bn-ipg="mindex-z-nav-visa">
+                <h3>最佳风景</h3>
+                <p>您不能错过的美景</p>
+              </a>
+            </div>
+            <div class="zc-flex zc-item04" style="background-image: url(img/tip.svg);     background-size: 60px 70px;
+            background-position: 95% 80%;">
+              <a ms-attr="{href: 'content_route.html?type=d_'+type}" data-bn-ipg="mindex-z-nav-citywalk">
+                <h3>危险路段</h3>
+                <p>警示提醒，确保安全</p>
+              </a>
+            </div>
+            <div class="zc-flex zc-item05" style="background-size: 50px 40px;background-position: 95% 70%; ">
+                <a  ms-attr="{href: 'content_route.html?type=n_'+type}" data-bn-ipg="mindex-z-nav-citywalk">
+                    <h3>注意事项</h3>
+                    <p>保持警惕，注意自身安全</p>
+                </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- <section class="content">
+      
+      <div class="item"><a href="route_info.html?route=qingzang"><i class="fa fa-random" aria-hidden="true"></i>线上地图</a></div>
+      <div class="item"><a href="content_route_detail.html?id=des_qingzang"><i class="fa fa-random" aria-hidden="true"></i>线路说明</a></div>
+      <div class="item"><a href="content_route_detail.html?id=view_qingzang"><i class="fa fa-random" aria-hidden="true"></i>最佳风景</a></div>
+
+    </section> -->
+
+</div>
+
+</body>
+</html>
+<script src="js/base.js"></script>
+<script src="js/header.js"></script>
+<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/avalon.js/2.2.0/avalon.min.js"></script>
+<script src="js/jquery.query-object.js"></script>
+<script type="text/javascript" src="js/site_base.js"></script>
+
+<script>
+
+  var routes = {
+    'qingzang': '青藏线',
+    'chuanzangnan': '川藏南线',
+    'chuanzangbei': '川藏北',
+    'xinzang': '新藏线',
+    'dianzang': '滇藏线'
+  };
+
+//avalon controllers
+(function(){
+ var self = this;
+ self.content = avalon.define({
+    $id: "contents",
+    data:[],
+    page: 0,
+    type: 1,
+    sending: false,
+    getAPage:function(){
+        $.ajax({
+            type:'POST',
+            dataType: 'JSON',
+            data:{page:self.content.page, category:self.content.type},
+            url:'http://www.vnewcd.com/tibetsecure-admin/index.php/content/getAPageByCategory/',
+        })
+        .done(function (results) {
+            if (results.success == 1 && results.data.length > 0){
+              for(i=0; i<results.data.length; i++)
+                self.content.data.push(results.data[i]);
+
+              self.content.page += 1;
+            }
+            self.content.sending = false;
+        })
+        .fail(function(){
+          self.content.sending = false;
+        })
+    },
+  });
+}).call(define('Controller'));
+
+// //global
+var type = $.query.get('type');
+if(type != null && typeof(type) != 'undefined' && type != '')
+{
+  Controller.content.type = type;
+  Controller.content.route = routes[type];
+  //Controller.content.sending = true;
+  //Controller.content.getAPage();
+}
+else{
+    alert('数据获取不正确');
+    //window.location.href = '<?php echo site_url() ?>';
+}
+
+
+window.onscroll = function () {
+  if (Controller.content.sending) {
+    return;
+  }
+
+  if(Scroll.isScrollToPageBottom()){
+        Controller.content.sending = true;
+        Controller.content.getAPage();
+    }
+}
+
+</script>

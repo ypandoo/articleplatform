@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title></title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui,viewport-fit=cover"
+	/>
+	<meta name="format-detection" content="telephone=no,address=no" />
+	<meta name="referrer" content="always" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="no" />
+
+  <script src="js/base.js"></script>
+	<script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/ui.css" />
+  <link rel="stylesheet" type="text/css" href="css/header.css" />
+
+	<link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/element-ui/2.4.0/theme-chalk/index.css" rel="stylesheet">
+
+	<style>
+		.page__hd {
+			padding: 15px 20px;
+		}
+		.page__title {
+			text-align: left;
+			font-size: 25px;
+			font-weight: 600;
+		}
+    .page__desc {
+        margin-top: 5px;
+        color: #888;
+        text-align: left;
+        font-size: 14px;
+    }
+		.weui-grid__icon {
+			width: 30px;
+			height: 30px;
+			margin: 0 auto;
+    }
+    .weui-media-box__desc {
+    color: #999999;
+    font-size: 12px;
+}
+.weui-media-box_appmsg .weui-media-box__thumb {
+    vertical-align: middle;
+}
+
+.sub-title{
+  font-size: 18px;
+    font-weight: 500;
+    /* border-left: 3px solid #b6f5ffb0;
+    padding-left: 10px; */
+    margin: 10px 0
+}
+
+.sub-title span{
+  font-size: 14px;
+    color: #a7a7a7;
+
+}
+
+.pica_sticker_item_container {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    width: auto;
+    margin-right: 10px !important;
+    /* max-width: 100px; */
+}
+
+.selected{
+  border: 3px solid #10aeff !important;
+}
+
+.weui-article {
+    padding: 0px 20px;
+    font-size: 15px;
+}
+
+body{
+  /* width: 100%;
+  overflow-x: hidden; */
+}
+	</style>
+</head>
+
+<body style="">
+    <div  id="vueapp">
+        <header class="head2home">
+            <el-dropdown  style="width: 50px; height: 50px;">
+                <div class="el-dropdown-link" style="width: 50px; height: 50px;">
+                    <img src="img/home.png" alt="" class="src" style="width: 30px; height: 30px; margin: 10px;">
+                </div>
+
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item v-for="menu in menuList"><a :href="menu.url">{{menu.title}}</a></el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+        </header>
+
+      <el-carousel :interval="4000" height="300px" indicator-position="outside" arrow="always">
+          <el-carousel-item v-for="(image,index) in item.image_list" :key="index">
+            <img :src="image" alt="" height="300px"> 
+          </el-carousel-item>
+        </el-carousel>
+
+      <div class="page__hd">
+        <div style="border-left: 3px solid #259ede;padding-left: 15px;">
+            <h1 class="page__title">{{item.title}}</h1>
+            <p class="page__desc" style="font-size: 12px">{{ item.desc}}</p>    
+        </div>
+      </div>
+
+    <!-- <div style="padding: 10px 20px 10px 20px; " v-show="item.image_list">
+        <img :src="currentImage" alt="" v-show="currentImage" style="width:100%; border-radius:10px; box-shadow: 2px 2px 13px 0px rgba(128, 128, 128, 0.5)">
+    </div> -->
+
+    <!-- <div style="position: relative; height: 90px;">
+      <div style="width: 100%; padding: 10px 0px; position: absolute; left:20px">
+        <div class="image_swiper swiper-container" style="" v-show="item.image_list">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="img in item.image_list" style="margin-right: 10px">
+              <div class="" @click="activeImage(img)">
+                <img :src="img" alt="" width="80px" height="55px" style="border-radius: 5px; box-sizing: border-box;" v-bind:class="{ selected: img == currentImage}">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+    <!-- <div style="padding: 10px 20px 10px 20px; border-top: 1px solid rgba(0,0,0,0.1)" v-show="item.vedio">
+        <p class="sub-title">语音解说<br><span>Audio Guide</span></p> -->
+
+        <!-- <img :src="currentImage" alt="" v-show="currentImage" style="width:100%; border-radius:10px; box-shadow: 2px 2px 13px 0px rgba(128, 128, 128, 0.5)"> -->
+
+
+        <!-- <div class="weui-grids" v-show="item.vedio">
+            <a @click="playAudio('zh')" class="weui-grid" v-show="item.audio_zh" >
+              <div class="weui-grid__icon">
+                <img src="img/tour/yuyin.png" alt="">
+              </div>
+              <p class="weui-grid__label">
+                中文解说
+              </p>
+            </a>
+            <a @click="playAudio('zy')" class="weui-grid" v-show="item.audio_zy">
+              <div class="weui-grid__icon">
+                <img src="img/tour/yuyin.png" alt="">
+              </div>
+              <p class="weui-grid__label">
+                藏文解说
+              </p>
+            </a>
+            <a @click="playAudio('en')" class="weui-grid"  v-show="item.audio_en">
+              <div class="weui-grid__icon">
+                <img src="img/tour/yuyin.png" alt="">
+              </div>
+              <p class="weui-grid__label">
+                英文解说
+              </p>
+            </a>
+            <a @click="playAudio('jp')" class="weui-grid"  v-show="item.audio_jp">
+              <div class="weui-grid__icon">
+                <img src="img/tour/yuyin.png" alt="">
+              </div>
+              <p class="weui-grid__label">
+                日语解说
+              </p>
+            </a>
+            <a @click="playAudio('tu')" class="weui-grid"  v-show="item.audio_tu">
+              <div class="weui-grid__icon">
+                <img src="img/tour/yuyin.png" alt="">
+              </div>
+              <p class="weui-grid__label">
+                西班牙语解说
+              </p>
+            </a>
+          </div>	 -->
+    <!-- </div> -->
+
+    <!-- <div style="padding: 10px 20px 10px 20px; " v-show="item.vedio">
+        <p class="sub-title">视频导览<br><span>Vedio Guide</span></p>
+                <video id="my-video" autoplay="false" controls="controls" preload="auto" style="
+                  height: 250px;width: 100%;background-color: black;z-index: 1;">
+                <source type='video/mp4'>
+            </video>
+    </div> -->
+
+    <div style="padding: 10px 20px 10px 20px; border-top: 1px solid rgba(0,0,0,0.1)" v-show="item.vedio">
+        <p class="sub-title">详细介绍<br><span>More Info</span></p>
+    
+    </div>
+
+    <article class="weui-article">
+      <section>
+          <!-- <h2 class="title">章标题</h2> -->
+          <section>
+            <div v-html="item.content"></div>
+          </section>
+      </section>
+  </article>
+	
+
+	</div>
+
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.min.js"></script>
+  <script src="https://cdn.bootcss.com/element-ui/2.4.0/index.js"></script>
+
+	<script type="text/javascript">
+    window.vueapp = new Vue({
+            el: "#vueapp",
+            data: {
+              item:{title:"", content:"", url:""},
+              id: "",
+              currentImage : "",
+              currentLang: "",
+              menuList: []
+            },
+            computed:{
+              // showMore: function(){
+              //   return this.currentPage < this.pages
+              // }
+            },
+            methods: {
+              pauseAllAudio: function(){
+                // window.audio_zy.pause()
+                // window.audio_zh.pause()
+                // window.audio_en.pause()
+                // window.audio_jp.pause()
+                // window.audio_tu.pause()
+              },
+              playAudio:function(lang){
+                      this.pauseAllAudio()
+                      if(this.currentLang == lang){
+                        return
+                      }
+                      this.currentLang = lang
+                      if(lang == 'zh'){
+                        if (window.audio_zh.paused) {
+                            window.audio_zh.play();
+                        } else {
+                            window.audio_zh.pause();
+                        }
+                      }else if(lang == 'en'){
+                        if (window.audio_en.paused) {
+                            window.audio_en.play();
+                        } else {
+                            window.audio_en.pause();
+                        }
+                      }else if(lang == 'zy'){
+                        if (window.audio_zy.paused) {
+                            window.audio_zy.play();
+                        } else {
+                            window.audio_zy.pause();
+                        }
+                      }else if(lang == 'jp'){
+                        if (window.audio_jp.paused) {
+                            window.audio_jp.play();
+                        } else {
+                            window.audio_jp.pause();
+                        }
+                      }else if(lang == 'tu'){
+                        if (window.audio_tu.paused) {
+                            window.audio_tu.play();
+                        } else {
+                            window.audio_tu.pause();
+                        }
+                      }else{
+                        alert('不支持的种类')
+                      }
+
+                    },
+
+              activeImage: function(img){
+                this.currentImage = img
+              },
+
+              getInfo: function(){
+                var self = this
+                var submitData = {"id": self.id}
+
+                //banner
+                Vue.http.post(window.serviceUrl + '/article/findOne', submitData)
+                    .then(function (res) {
+                        console.log('------------article FindOne------------------')
+                        console.log(res);
+                        if (res.body.error_code == 0) {
+                          self.item = res.body.item
+                          if(self.item.image_list && self.item.image_list.length > 0)
+                          {
+                            self.currentImage = self.item.image_list[0]
+                            // window.imageSwiper = new Swiper(
+                            //               ".image_swiper", {
+                            //                   freeMode: true,
+                            //                   slidesPerView: 'auto',
+                            //                   spaceBetween: 5,
+                            //                   observer: true,
+                            //                   observeParents: true,
+                            //                   onTransitionEnd: function (swiper) {
+                            //                       setTimeout(function () {
+                            //                           window.imageSwiper.update();
+                            //                       }, 200);
+                            //                   }
+                            //               });
+                            // //audio
+                            // window.audio_zh = document.createElement("audio");
+                            // window.source_zh = document.createElement("source");
+                            // window.source_zh.type = "audio/mpeg" ;
+                            // window.source_zh.src = self.item.audio_zh ;
+                            // window.audio_zh.appendChild(window.source_zh);
+
+                            // window.audio_zy = document.createElement("audio");
+                            // window.source_zy = document.createElement("source");
+                            // window.source_zy.type = "audio/mpeg" ;
+                            // window.source_zy.src = self.item.audio_zy ;
+                            // window.audio_zy.appendChild(window.source_zy);
+
+                            // window.audio_en = document.createElement("audio");
+                            // window.source_en = document.createElement("source");
+                            // window.source_en.type = "audio/mpeg" ;
+                            // window.source_en.src = self.item.audio_en ;
+                            // window.audio_en.appendChild(window.source_en);
+
+                            // window.audio_jp = document.createElement("audio");
+                            // window.source_jp = document.createElement("source");
+                            // window.source_jp.type = "audio/mpeg" ;
+                            // window.source_jp.src = self.item.audio_jp ;
+                            // window.audio_jp.appendChild(window.source_jp);
+
+                            // window.audio_tu = document.createElement("audio");
+                            // window.source_tu = document.createElement("source");
+                            // window.source_tu.type = "audio/mpeg" ;
+                            // window.source_tu.src = self.item.audio_tu ;
+                            // window.audio_tu.appendChild(window.source_tu);
+
+                            // //vedio
+                            // var video = document.getElementsByTagName('video')[0];
+                            // var sources = video.getElementsByTagName('source');
+                            // sources[0].src = self.item.vedio;
+                            // video.load();
+                            // video.pause();
+
+                          }
+                        } else {
+
+                        }
+                    }, function (res) {
+                        alert('系统发生未知错误,请联系我们')
+                  });
+
+              },
+
+              getMenu: function(sectionId){
+									var self = this
+
+									//banner
+									Vue.http.post(window.serviceUrl + '/menu/list', {})
+											.then(function (res) {
+													console.log('------------menu list------------------')
+													console.log(res);
+													if (res.body.error_code == 0) {
+														self.menuList = res.body.items
+													} else {
+														alert('系统发生未知错误,请联系我们')
+													}
+											}, function (res) {
+													alert('系统发生未知错误,请联系我们')
+										});
+
+								},
+
+            },
+            mounted: function() {
+                this.id = Utility.getURLParameter('id')
+                if(!this.id)
+                {
+                  alert("找不到内容，请联系管理员!")
+                  return
+                }
+                this.getInfo()
+                this.getMenu()
+            }
+        });
+	</script>
+
+
+
+</body>
+
+</html>
